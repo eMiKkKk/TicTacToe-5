@@ -5,6 +5,7 @@ function createEmptyBoard(size=15) {
     for (let i = 0; i < size; i++) {
         board.push(new Array(size).fill(null));
     }
+    console.log(board)
     return board;
 
 }
@@ -19,15 +20,7 @@ function makeMove(board, row, col, player) {
 
 }
 
-let currentBoard = createEmptyBoard(30);
-
-currentBoard = makeMove(currentBoard, 3, 0, 'X');
-currentBoard = makeMove(currentBoard, 3, 1, 'X');
-currentBoard = makeMove(currentBoard, 3, 2, 'X');
-currentBoard = makeMove(currentBoard, 3, 3, 'X');
-currentBoard = makeMove(currentBoard, 3, 6, 'X');
-currentBoard = makeMove(currentBoard, 2, 4, 'O');
-
+let currentBoard = createEmptyBoard(20);
 
 function checkWin(board, lastRow, lastCol, player){
 
@@ -102,4 +95,4 @@ function checkWin(board, lastRow, lastCol, player){
 };
 
 
-checkWin(currentBoard, 3,2,'X');
+export { createEmptyBoard, makeMove, checkWin };
