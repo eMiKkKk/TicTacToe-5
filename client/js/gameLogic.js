@@ -1,5 +1,3 @@
-
-
 function createEmptyBoard(size=15) {
     const board = [];
     for (let i = 0; i < size; i++) {
@@ -20,7 +18,6 @@ function makeMove(board, row, col, player) {
 
 }
 
-let currentBoard = createEmptyBoard(20);
 
 function checkWin(board, lastRow, lastCol, player){
 
@@ -34,49 +31,61 @@ function checkWin(board, lastRow, lastCol, player){
   let countUpLeft = 0;
   console.log('BOARD',board)
   for (let i = 1; i <= 4; i++) {
-    if (board[lastRow][lastCol - i] === player) {
+    const colIndex = lastCol - i;
+    if (colIndex >= 0 && board[lastRow][colIndex] === player) {
       countLeft++;
     }
     else break;
   }
     for (let i = 1; i <= 4; i++) {
-    if (board[lastRow][lastCol + i] === player) {
+    const colIndex = lastCol + i;
+    if (colIndex < board.length && board[lastRow][colIndex] === player) {
       countRight++;
     }
     else break;
   }
     for (let i = 1; i <= 4; i++) {
-    if (board[lastRow - i][lastCol] === player) {
+    const rowIndex = lastRow - i;
+    if (rowIndex >= 0 && board[rowIndex][lastCol] === player) {
       countUp++;
     }
     else break;
   }
     for (let i = 1; i <= 4; i++) {
-    if (board[lastRow + i][lastCol] === player) {
+    const rowIndex = lastRow + i;
+    if (rowIndex < board.length && board[rowIndex][lastCol] === player) {
       countDown++;
     }
     else break;
   }
       for (let i = 1; i <= 4; i++) {
-    if (board[lastRow - i][lastCol -i] === player) {
+    const rowIndex = lastRow - i;
+    const colIndex = lastCol - i;
+    if (rowIndex >= 0 && colIndex >= 0 && board[rowIndex][colIndex] === player) {
       countUpLeft++;
     }
     else break;
   }
       for (let i = 1; i <= 4; i++) {
-    if (board[lastRow - i][lastCol +i] === player) {
+    const rowIndex = lastRow - i;
+    const colIndex = lastCol + i;
+    if (rowIndex >= 0 && colIndex < board.length && board[rowIndex][colIndex] === player) {
       countUpRight++;
     }
     else break;
   }
         for (let i = 1; i <= 4; i++) {
-    if (board[lastRow + i][lastCol + i] === player) {
+    const rowIndex = lastRow + i;
+    const colIndex = lastCol + i;
+    if (rowIndex < board.length && colIndex < board.length && board[rowIndex][colIndex] === player) {
       countDownRight++;
     }
     else break;
   }
           for (let i = 1; i <= 4; i++) {
-    if (board[lastRow + i][lastCol - i] === player) {
+    const rowIndex = lastRow + i;
+    const colIndex = lastCol - i;
+    if (rowIndex < board.length && colIndex >= 0 && board[rowIndex][colIndex] === player) {
       countDownLeft++;
     }
     else break;
@@ -87,7 +96,7 @@ function checkWin(board, lastRow, lastCol, player){
     countUp + countDown + 1 >=5 ||
     countUpLeft + countDownRight + 1 >=5 ||
     countUpRight + countDownLeft + 1 >=5  ) {
-    console.log(`${player} победил!`);
+    alert(`${player} победил!`);
     return true;
   }
   else return false;
@@ -95,4 +104,4 @@ function checkWin(board, lastRow, lastCol, player){
 };
 
 
-export { createEmptyBoard, makeMove, checkWin };
+export { createEmptyBoard, makeMove, checkWin};

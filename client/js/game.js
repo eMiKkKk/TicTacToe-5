@@ -26,16 +26,25 @@ localGameButton.className = ('button__localgame');
 localGameButton.textContent = 'Сетевая игра';
 mainButtons.appendChild(localGameButton);
 
+let currentBoard = createEmptyBoard(20);
+let currentPlayer = 'X';
+
+
+function switchPlayer() {
+  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+}
 
 
 function renderBoard(size) {
   gameField.innerHTML = '';
-  const cell = document.createElement('div');
-  cell.className = 'gamecell'
+
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
         const cell = document.createElement('div');
-  cell.className = 'gamecell'
+        cell.className = 'gamecell';
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        cell.className = 'gamecell'
       // console.log('ячейка создана!')
       gameField.append(cell);
     }
@@ -44,3 +53,17 @@ function renderBoard(size) {
 
 renderBoard(20);
 
+
+newGameButton.addEventListener('click', () => {
+  renderBoard(20);
+  currentBoard = createEmptyBoard(20);
+  currentPlayer = 'X';
+});
+
+gameField.addEventListener('click', (e) => {
+  currentBoard = makeMove(currentBoard, +e.target.dataset.row, +e.target.dataset.col, currentPlayer);
+  console.log('dataset:',e.target.dataset.row, e.target.dataset.col)
+  e.target.textContent = currentPlayer;
+  checkWin(currentBoard, +e.target.dataset.row, +e.target.dataset.col, currentPlayer)
+  switchPlayer();
+})
