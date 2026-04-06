@@ -18,11 +18,16 @@
 
 .gamecell {
   outline: 1px solid rgb(158, 157, 157);
-  width: 40px;
-  height: 40px;
+  /* width: 40px;
+  height: 40px; */
   font-family: Georgia, 'Times New Roman', Times, sans-serif;
-  font-size: 40px;
+  font-size: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.flashed {
+  background-color: #b4ddb4;
+  transition: background-color 2s ease ;
 }
