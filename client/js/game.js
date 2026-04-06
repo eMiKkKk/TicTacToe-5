@@ -11,6 +11,36 @@ let isGameActive = true;
 
 const mainWrapper = document.getElementById('app');
 
+
+const header = document.createElement('header');
+header.className = 'main__header';
+mainWrapper.append(header);
+
+const loginButtons = document.createElement('div');
+loginButtons.className = 'login__buttons';
+header.append(loginButtons)
+
+const authButton = document.createElement('button');
+authButton.className = 'auth__button';
+authButton.textContent = 'Login';
+loginButtons.append(authButton);
+
+const solButton = document.createElement('button');
+solButton.className = 'sol__button';
+solButton.textContent = 'Solana';
+loginButtons.append(solButton);
+
+const somButton = document.createElement('button');
+somButton.className = 'som__button';
+somButton.textContent = 'Somnia';
+loginButtons.append(somButton);
+
+const exitButton = document.createElement('button');
+exitButton.className = 'exit__button';
+exitButton.textContent = 'Отключиться';
+loginButtons.append(exitButton);
+
+
 const title = document.createElement('h1');
 title.className = 'main__heading';
 title.textContent = 'ЗАГАЛОВАК';
