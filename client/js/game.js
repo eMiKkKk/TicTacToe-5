@@ -40,6 +40,11 @@ exitButton.className = 'exit__button';
 exitButton.textContent = 'Отключиться';
 loginButtons.append(exitButton);
 
+const walletStatusError = document.createElement('span');
+walletStatusError.className = ('wallet-status');
+walletStatusError.textContent = ('Кошелёк не подключен!');
+header.append(walletStatusError)
+
 
 const title = document.createElement('h1');
 title.className = 'main__heading';
@@ -64,6 +69,7 @@ mainWrapper.append(mainButtons);
 
 const newGameButton = document.createElement('button'); //новая игра
 newGameButton.className = ('button__newgame');
+newGameButton.setAttribute('disabled', 'disabled');
 newGameButton.textContent = 'Новая игра';
 mainButtons.appendChild(newGameButton);
 
