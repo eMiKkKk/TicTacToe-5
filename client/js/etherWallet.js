@@ -39,7 +39,7 @@ function disconnectWallet() {
   somButton.textContent = 'Somnia';
   walletStatus.textContent = 'Кошелёк не подключён';
   newGameButton.disabled = true;
-  exitButton.style.display = 'none';
+  // exitButton.style.display = 'none';
   console.log('Кошелёк отключён');
 }
 
