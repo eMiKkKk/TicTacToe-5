@@ -84,6 +84,13 @@ async function connectSomnia() {
     }
 
     currentWalletAddress = address;
+    const sendWalletData = await fetch('./api/user', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({address})
+    })
     localStorage.setItem('somnia_wallet_address', address);
 
     updateUIAfterConnection(address);
